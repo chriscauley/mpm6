@@ -1,16 +1,17 @@
-const reverse = penul => {
-  const final = 1e6
+const ANS_MAX = 9007199254740991 /2
+const TURN_MAX = 100
+const final = 1e6
 
-  const ANS_MAX = 9007199254740991
+const reverse = penul => {
+
   let today = penul
   let tomorrow = final
   let yesterday
 
-  const TURN_MAX = 100
   const r_balances = [tomorrow, today]
   let turns = 0
   while(turns < TURN_MAX) {
-    if (Math.abs(tomorrow - today) > ANS_MAX / 2) {
+    if (Math.abs(tomorrow - today) > ANS_MAX) {
       break
     }
     yesterday = tomorrow - today
@@ -23,9 +24,6 @@ const reverse = penul => {
   if (!turns) {
     throw "Ran out of turns"
   }
-
-  // const n1 = -21000055
-  // const n2 = 13000034 -n1
 
   const n1 = today
   const n2 = tomorrow - yesterday
